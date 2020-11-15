@@ -6,6 +6,8 @@ import shutil
 def a_c(input_file1, input_file2, output_file):
     img1 = cv2.imread(input_file1)
     img2 = cv2.imread(input_file2)
+    img1 = cv2.cvtColor(img1, cv2.COLOR_RGBA2RGB)
+    img2 = cv2.cvtColor(img2, cv2.COLOR_RGBA2RGB)
     print(input_file1)
     print(type(img1))
     img1 = img1.astype(np.float32)
@@ -34,7 +36,7 @@ for file in sorted(os.listdir(in_path)):
 
     print(len-1)
     if index > 1 and index < len:
-        img_path1 = os.path.join(in_path, ('%05d' % (index-1)) + '.jpg')
+        img_path1 = os.path.join(in_path, ('%05d' % (index-1)) + '.png')
         img_path2 = os.path.join(in_path, file)
         out_path = os.path.join(out_path, file)
         a_c(img_path1, img_path2, out_path)
